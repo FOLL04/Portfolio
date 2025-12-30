@@ -23,7 +23,7 @@ function Home() {
       id: 1,
       title: "Site web de quizz INGGBBATEST-PRO",
       description: "Site web de quizz developpé avec du javascript native",
-      image: "/images/project1.jpg",
+      image: "/images/breifJS.png",
       technologies: ["Javascript"],
       github: "https://github.com/FOLL04/INGGBAATEST-pro",
       demo: "https://foll04.github.io/INGGBAATEST-pro/",
@@ -34,7 +34,7 @@ function Home() {
       id: 2,
       title: "Plateforme TRAVEL AGENCY",
       description: "Site web d'une entreprise de gestion de voyage du togo vers l'extérieure",
-      image: "/images/project2.jpg",
+      image: "/images/travel.jpeg",
       technologies: ["HTML5", "CSS3"],
       github: "https://github.com/FOLL04/Travel-Agency",
       demo: null,
@@ -45,7 +45,7 @@ function Home() {
       id: 3,
       title: "Logiciel GESCADMEC",
       description: "Logiciel de gestion d'une école.",
-      image: "/images/project3.jpg",
+      image: "/images/gescadmec.jpg",
       technologies: ["LARAVEL"],
       github: "https://github.com/FOLL04/Gescadmec",
       demo: null,
@@ -56,7 +56,7 @@ function Home() {
       id: 4,
       title: "Site web Pour un collègue informaticien",
       description: "Projet dr creation d'un site web pour un collègue informaticien",
-      image: "/images/project4.jpg",
+      image: "/images/briefSITE.jpeg",
       technologies: ["HTML5", "CSS3", "Boostrap"],
       github: "https://github.com/FOLL04/Site-Responsive1",
       demo: "https://foll04.github.io/Site-Responsive1/",
@@ -67,7 +67,7 @@ function Home() {
       id: 5,
       title: "Site web pour une Boutique",
       description: "Site web pour une boutique de vente d'articles importé d'allemagne",
-      image: "/images/project5.jpg",
+      image: "/images/germany.jpeg",
       technologies: ["HTML5", "CSS3", "JavaScript"],
       github: "https://github.com/FOLL04/GermanyShop",
       demo: null,
@@ -76,13 +76,13 @@ function Home() {
     },
     {
       id: 6,
-      title: "Outil de Productivité",
-      description: "Application de gestion des tâches avec collaboration d'équipe et rappels intelligents.",
-      image: "/images/project6.jpg",
-      technologies: ["Next.js", "Prisma", "PostgreSQL"],
-      github: null,
-      demo: null,
-      type: "brief",
+      title: "Mon Portfolio Personnel",
+      description: "Site web personnel pour présenter mes compétences et projets.",
+      image: "/images/portfolio.jpeg",
+      technologies: ["React.js", "Github", "Render.com"],
+      github: "https://github.com/FOLL04/Portfolio",
+      demo: "https://isidore.onrender.com/",
+      type: "github",
       category: "web"
     }
   ];
@@ -125,66 +125,66 @@ function Home() {
   const galleryItems = [
     {
       id: 1,
-      image: "/images/maquette-site1.jpg",
-      title: "Maquette Site E-commerce",
+      image: "/images/FIGMA1.png",
+      title: "Maquette de l'application Facebook",
       category: "figma",
-      description: "Design complet d'un site e-commerce avec Figma - Interface utilisateur moderne et intuitive",
+      description: "Design UI/UX complet pour une application de réseau social",
       outils: ["Figma", "Prototypage"]
     },
     {
       id: 2,
-      image: "/images/maquette-app.jpg",
-      title: "Application Mobile",
-      category: "figma",
-      description: "Maquette d'application mobile avec design system complet et interactions",
-      outils: ["Figma", "Auto Layout"]
+      image: "/images/Ametoko.png ",
+      title: "Conception de Logo pour AetokoStyle",
+      category: "logo",
+      description: "Logo pour un atelier de couture moderne à lomé AetokoStyle",
+      outils: ["Canva", "Vector Design"]
     },
     {
       id: 3,
-      image: "/images/logo-restaurant.jpg",
-      title: "Logo Restaurant",
-      category: "logo",
+      image: "/images/restau2.png",
+      title: "Site E-commerce pour un Restaurant",
+      category: "figma",
       description: "Création d'identité visuelle pour un restaurant gastronomique",
-      outils: ["Canva", "Illustrator"]
+      outils: ["Figma", "Auto Layout"]
     },
     {
       id: 4,
-      image: "/images/affiche-evenement.jpg",
-      title: "Affiche Événementiel",
+      image: "/images/evaeme.png",
+      title: "Affiche pour une boutique de vente de ciment",
       category: "affiche",
-      description: "Design d'affiche pour un événement culturel local",
+      description: "Design d'affiche pour un commercant de ciment à Lomé EVAEME",
       outils: ["Canva", "Photoshop"]
     },
     {
       id: 5,
-      image: "/images/maquette-dashboard.jpg",
-      title: "Dashboard Admin",
+      image: "/images/land.png",
+      title: "Landing page pour un site personnel",
       category: "figma",
-      description: "Interface d'administration avec métriques et tableaux de bord",
-      outils: ["Figma", "Charts"]
+      description: "Page de destination moderne pour un portfolio de service freelance",
+      outils: ["Figma", "UI Kit"]
     },
     {
       id: 6,
-      image: "/images/logo-startup.jpg",
-      title: "Logo Startup Tech",
+      image: "/images/MAKAKOOO1.png",
+      title: "Logo Startup E-commerce Shopify",
       category: "logo",
-      description: "Identité moderne pour une startup dans la technologie",
+      description: "Identité moderne pour une startup e-commerce spécialisée dans la construction",
       outils: ["Canva", "Vector Design"]
     },
     {
       id: 7,
-      image: "/images/affiche-promo.jpg",
-      title: "Affiche Promotionnelle",
+      image: "/images/kani.png",
+      title: "Affiche De lanvcement de formations",
       category: "affiche",
-      description: "Campagne publicitaire pour lancement de produit",
+      description: "Affiche promotionnelle pour le lancement de nouvelles formations en presentiel",
       outils: ["Canva", "Marketing"]
     },
     {
       id: 8,
-      image: "/images/maquette-landing.jpg",
-      title: "Page de Destination",
+      image: "/images/dashboard.png",
+      title: "Dashboard Admin pour Application Web",
       category: "figma",
-      description: "Landing page optimisée pour conversion avec call-to-action",
+      description: "Tableau de bord administrateur intuitif pour la gestion des utilisateurs et du contenu",
       outils: ["Figma", "UI Kit"]
     }
   ];
@@ -862,20 +862,26 @@ function Home() {
               <div className="social-links-contact">
                 <h4>Suivez-moi sur les réseaux</h4>
                 <div className="social-icons-contact">
-                  <a href="#" className="social-icon-contact">
+                  <a href="https://www.tiktok.com/@isidoreeklou228?_r=1&_t=ZM-92et6Its9dY" className="social-icon-contact">
                     <i className="fab fa-tiktok"></i>
                   </a>
-                  <a href="#" className="social-icon-contact">
+                  <a href="https://www.instagram.com/isidorekl21?igsh=ZXF3OGl2aWx3ZnBz" className="social-icon-contact">
                     <i className="fab fa-instagram"></i>
                   </a>
-                  <a href="#" className="social-icon-contact">
+                  <a href="https://www.facebook.com/isidore.eklou.92" className="social-icon-contact">
                     <i className="fab fa-facebook"></i>
                   </a>
-                  <a href="#" className="social-icon-contact">
+                  <a href="https://www.threads.net/@isidorekl21" className="social-icon-contact">
                     <i className="fab fa-threads"></i>
                   </a>
-                  <a href="#" className="social-icon-contact">
+                  <a href="https://www.linkedin.com/in/isidore-eklou-461992360?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" className="social-icon-contact">
                     <i className="fab fa-linkedin"></i>
+                  </a>
+                  <a href="https://github.com/FOLL04" className="social-icon-contact">
+                    <i className="fab fa-github"></i>
+                  </a>
+                  <a href="https://x.com/Isidore_kl21?t=XnW_ayV9RZwUry15zTUtzQ&s=09" className="social-icon-contact">
+                    <i className="fab fa-twitter"></i>
                   </a>
                 </div>
               </div>

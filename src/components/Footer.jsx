@@ -128,25 +128,28 @@ function Footer() {
 
         <div className="footer-section">
           <h3>Réseaux sociaux</h3>
-          <div className="social-icons">
-            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="social-icon" title="TikTok">
-              <i className="fab fa-tiktok"></i>
-            </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon" title="Instagram">
-              <i className="fab fa-instagram"></i>
-            </a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon" title="Facebook">
-              <i className="fab fa-facebook"></i>
-            </a>
-            <a href="https://X.com" target="_blank" rel="noopener noreferrer" className="social-icon" title="X">
-              <i className="fab fa-x-twitter"></i>
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon" title="LinkedIn">
-              <i className="fab fa-linkedin"></i>
-            </a>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="social-icon" title="GitHub">
-              <i className="fab fa-github"></i>
-            </a>
+          <div className="social-icons-contact">
+                  <a href="https://www.tiktok.com/@isidoreeklou228?_r=1&_t=ZM-92et6Its9dY" className="social-icon-contact">
+                    <i className="fab fa-tiktok"></i>
+                  </a>
+                  <a href="https://www.instagram.com/isidorekl21?igsh=ZXF3OGl2aWx3ZnBz" className="social-icon-contact">
+                    <i className="fab fa-instagram"></i>
+                  </a>
+                  <a href="https://www.facebook.com/isidore.eklou.92" className="social-icon-contact">
+                    <i className="fab fa-facebook"></i>
+                  </a>
+                  <a href="https://www.threads.net/@isidorekl21" className="social-icon-contact">
+                    <i className="fab fa-threads"></i>
+                  </a>
+                  <a href="https://www.linkedin.com/in/isidore-eklou-461992360?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" className="social-icon-contact">
+                    <i className="fab fa-linkedin"></i>
+                  </a>
+                  <a href="https://github.com/FOLL04" className="social-icon-contact">
+                    <i className="fab fa-github"></i>
+                  </a>
+                  <a href="https://x.com/Isidore_kl21?t=XnW_ayV9RZwUry15zTUtzQ&s=09" className="social-icon-contact">
+                    <i className="fab fa-twitter"></i>
+                  </a>
           </div>
           
          
