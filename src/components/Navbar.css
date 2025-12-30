@@ -2,18 +2,18 @@
 
 /* Variables CSS */
 :root {
-  --primary-color: #ffffff;
-  --primary-dark: #ffffff;
-  --secondary-color: #ffffff;
+  --primary-color: #3a86ff;
+  --primary-dark: #2667cc;
+  --secondary-color: #8338ec;
   --text-light: #f8f9fa;
-  --text-dark: #ffffff;
-  --bg-dark: #ffffff;
+  --text-dark: #212529;
+  --bg-dark: #1a1a2e;
   --bg-light: #ffffff;
   --gray-light: #e9ecef;
-  --gray-medium: #ffffff;
-  --gray-dark: #ffffff;
-  --shadow: 0 4px 12px rgb(255, 253, 253);
-  --shadow-dark: 0 6px 20px rgb(248, 242, 242);
+  --gray-medium: #6c757d;
+  --gray-dark: #343a40;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-dark: 0 6px 20px rgba(0, 0, 0, 0.15);
   --transition: all 0.3s ease;
   --border-radius: 8px;
   --navbar-height: 80px;
