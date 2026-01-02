@@ -129,12 +129,7 @@ function Footer() {
         <div className="footer-section">
           <h3>Réseaux sociaux</h3>
           <div className="social-icons-contact">
-                  <a href="https://www.tiktok.com/@isidoreeklou228?_r=1&_t=ZM-92et6Its9dY" className="social-icon-contact">
-                    <i className="fab fa-tiktok"></i>
-                  </a>
-                  <a href="https://www.instagram.com/isidorekl21?igsh=ZXF3OGl2aWx3ZnBz" className="social-icon-contact">
-                    <i className="fab fa-instagram"></i>
-                  </a>
+                 
                   <a href="https://www.facebook.com/isidore.eklou.92" className="social-icon-contact">
                     <i className="fab fa-facebook"></i>
                   </a>
@@ -147,9 +142,7 @@ function Footer() {
                   <a href="https://github.com/FOLL04" className="social-icon-contact">
                     <i className="fab fa-github"></i>
                   </a>
-                  <a href="https://x.com/Isidore_kl21?t=XnW_ayV9RZwUry15zTUtzQ&s=09" className="social-icon-contact">
-                    <i className="fab fa-twitter"></i>
-                  </a>
+                  
           </div>
           
          
