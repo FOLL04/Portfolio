@@ -80,7 +80,7 @@ function Footer() {
       
       <div className="footer-bottom">
         <div className="footer-bottom-content">
-          <p>&copy; 2024 ISIDORE FOLLY EKLOU. Tous droits réservés.</p>
+          <p>&copy; 2026 ISIDORE FOLLY EKLOU. Tous droits réservés.</p>
         </div>
       </div>
     </footer>

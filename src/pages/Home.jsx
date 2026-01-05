@@ -257,7 +257,7 @@ function Home() {
     <div className="home">
       {/* META DESCRIPTIONS AJOUTÉES */}
       <Helmet>
-        <title>Isidore EKLOU - Référent Digital & Développeur Full Stack</title>
+        <title>Isidore EKLOU - Référent Digital & Développeur web junior passionné par L'UI/UX</title>
         <meta 
           name="description" 
           content="Portfolio de Isidore EKLOU, Référent Digital et Développeur Web Full Stack basé à Lomé. Expertise en développement web, design UI/UX et solutions digitales." 
@@ -276,7 +276,11 @@ function Home() {
           <div className="hero-container">
             <div className="hero-content">
               <h2>Isidore EKLOU</h2>
-              <p>Référent Digital & Développeur Web Full Stack</p>
+              <p>Référent Digital et Développeur Fullstack (Laravel & React), 
+                je transforme vos concepts en applications performantes avec une forte sensibilité UX/UI. 
+                Expert en solutions sur mesure et optimisation SEO, 
+                je mise sur les méthodes Agiles pour livrer des projets élégants et intuitifs. 
+                Découvrez mon univers entre code moderne et design centré sur l'utilisateur.</p>
               <div className="hero-buttons">
                 {/* REMPLACE LE BOUTON PAR CE LIEN : */}
                 <a 

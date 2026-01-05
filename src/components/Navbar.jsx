@@ -59,7 +59,7 @@ function Navbar() {
     { href: 'https://github.com/FOLL04', icon: 'fab fa-github', label: 'GitHub' },
     { href: 'https://www.linkedin.com/in/isidore-eklou-461992360?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app', icon: 'fab fa-linkedin', label: 'LinkedIn' },
     { href: 'https://x.com/Isidore_kl21?t=XnW_ayV9RZwUry15zTUtzQ&s=09', icon: 'fab fa-x-twitter', label: 'Twitter' },
-    { href: 'https://www.instagram.com/isidorekl21?igsh=ZXF3OGl2aWx3ZnBz', icon: 'fab fa-instagram', label: 'Instagram' }
+   
   ];
 
   
@@ -74,7 +74,7 @@ function Navbar() {
               <span className="logo-text">ISIDORE</span>
               <span className="logo-highlight">EKLOU</span>
             </div>
-            <div className="logo-subtitle">Référent Digital</div>
+            <div className="logo-subtitle">Référent Digital | Développeur web junior</div>
           </div>
 
           {/* Navigation Desktop */}
@@ -141,7 +141,10 @@ function Navbar() {
           <div className="mobile-header">
             <div className="mobile-logo">
               <span>ISIDORE EKLOU</span>
-              <div className="mobile-subtitle">Référent Digital</div>
+              <div className="mobile-subtitle">
+                Référent Digital | Développeur web junior
+                
+                </div>
             </div>
           </div>
 
