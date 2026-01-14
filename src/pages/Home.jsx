@@ -28,7 +28,8 @@ function Home() {
       github: "https://github.com/FOLL04/Travel-Agency",
       demo: null,
       completed: true,
-      responsive: true
+      responsive: true,
+      type: "website"
     },
     {
       id: 2,
@@ -39,7 +40,8 @@ function Home() {
       github: "https://github.com/FOLL04/Gescadmec",
       demo: null,
       completed: true,
-      responsive: true
+      responsive: true,
+      type: "app"
     },
     {
       id: 3,
@@ -50,7 +52,30 @@ function Home() {
       github: "https://github.com/FOLL04/GermanyShop",
       demo: null,
       completed: true,
-      responsive: true
+      responsive: true,
+      type: "website"
+    },
+    {
+      id: 4,
+      title: "Site vitrine pour une couturière AMETOKOSTYLE",
+      description: "Site web vitrine présentant les services et réalisations d'une couturière basée à Lomé",
+      image: "/images/germany.png",
+      technologies: ["WordPress", "PHP", "CSS3"],
+      github: null,
+      demo: "https://ametokostyle.page.gd/",
+      completed: true,
+      responsive: "https://ametokostyle.page.gd/"
+    },
+    {
+      id: 5,
+      title: "App web SaisieQuizz",
+      description: "Application web de saisie et gestion de quiz pour établissements éducatifs",
+      image: "/images/germany.png",
+      technologies: ["HTML5", "JavaScript", "CSS3"],
+      github: "https://github.com/FOLL04/saisiequizz",
+      demo: "https://foll04.github.io/saisiequizz/",
+      completed: true,
+      responsive: "https://foll04.github.io/saisiequizz/"
     }
   ];
 
@@ -404,70 +429,83 @@ function Home() {
         </div>
       </section>
 
-      {/* Section Projets */}
-      <section id="projets" className="section">
-        <div className="projects-container">
-          <div className="projects-header">
-            <h5>Mes Réalisations</h5>
-            <h2>Projets Professionnels</h2>
-            <p>Sélection de projets web complets et fonctionnels</p>
-          </div>
-          <div className="projects-grid">
-            {projects.map(project => (
-              <div key={project.id} className="project-card">
-                <div className="project-image">
-                  <img src={project.image} alt={project.title} />
-                  <div className="project-overlay">
-                    <div className="project-links">
-                      {project.github && (
-                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link">
-                          <i className="fab fa-github"></i> Code
-                        </a>
-                      )}
-                      {project.demo && (
-                        <a href={project.demo} target="_blank" rel="noopener noreferrer" className="project-link">
-                          <i className="fas fa-external-link-alt"></i> Demo
-                        </a>
-                      )}
-                      {!project.github && !project.demo && (
-                        <span className="project-private">
-                          <i className="fas fa-lock"></i> Code Privé
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                  {project.completed && (
-                    <div className="project-badge completed">
-                      <i className="fas fa-check-circle"></i> Complet
-                    </div>
-                  )}
-                </div>
-                <div className="project-content">
-                  <h3>{project.title}</h3>
-                  <p>{project.description}</p>
-                  <div className="project-technologies">
-                    {project.technologies.map((tech, index) => (
-                      <span key={index} className="tech-tag">{tech}</span>
-                    ))}
-                  </div>
-                  <div className="project-actions">
-                    {project.github && (
-                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn btn-outline">
-                        <i className="fab fa-github"></i> Code Source
-                      </a>
-                    )}
-                    {project.responsive && (
-                      <span className="responsive-badge">
-                        <i className="fas fa-mobile-alt"></i> Responsive
-                      </span>
-                    )}
-                  </div>
-                </div>
+            {/* Section Projets */}
+<section id="projets" className="section">
+  <div className="projects-container">
+    <div className="projects-header">
+      <h5>Mes Réalisations</h5>
+      <h2>Projets Professionnels</h2>
+      <p>Sélection de projets web complets et fonctionnels</p>
+    </div>
+    <div className="projects-grid">
+      {projects.map(project => (
+        <div key={project.id} className="project-card">
+          <div className="project-image">
+            <img src={project.image} alt={project.title} />
+            <div className="project-overlay">
+              <div className="project-links">
+                {project.github && (
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link github-link">
+                    <i className="fab fa-github"></i> GitHub
+                  </a>
+                )}
+                {project.demo && (
+                  <a 
+                    href={project.demo} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="project-link demo-link"
+                  >
+                    <i className="fas fa-external-link-alt"></i> Voir Demo
+                  </a>
+                )}
+                {!project.github && !project.demo && (
+                  <span className="project-private">
+                    <i className="fas fa-lock"></i> Code Privé
+                  </span>
+                )}
               </div>
-            ))}
+            </div>
+            {project.completed && (
+              <div className="project-badge completed">
+                <i className="fas fa-check-circle"></i> Complet
+              </div>
+            )}
+          </div>
+          <div className="project-content">
+            <h3>{project.title}</h3>
+            <p>{project.description}</p>
+            <div className="project-technologies">
+              {project.technologies.map((tech, index) => (
+                <span key={index} className="tech-tag">{tech}</span>
+              ))}
+            </div>
+            <div className="project-actions">
+              {project.github && (
+                <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn btn-github">
+                  <i className="fab fa-github"></i> Code Source
+                </a>
+              )}
+              {project.demo && (
+                <a 
+                  href={project.demo} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="btn btn-demo"
+                >
+                  <i className="fas fa-eye"></i> Voir la Demo
+                </a>
+              )}
+              
+            </div>
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+
+      
 
       {/* Section Compétences - SANS POURCENTAGES */}
       <section id="competences" className="section">

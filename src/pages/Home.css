@@ -331,83 +331,73 @@ body {
 }
 
 /* Section Projets */
+/* Section Projets */
+#projets {
+  padding: 80px 0;
+  background: #f8f9fa;
+}
+
+.projects-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
 .projects-header {
   text-align: center;
   margin-bottom: 60px;
 }
 
 .projects-header h5 {
-  color: var(--primary-color);
-  font-size: 1rem;
+  color: #6c63ff;
+  font-size: 1.1rem;
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .projects-header h2 {
   font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: var(--dark-color);
+  color: #333;
+  margin-bottom: 15px;
 }
 
 .projects-header p {
-  color: var(--text-light);
+  color: #666;
+  font-size: 1.1rem;
   max-width: 600px;
   margin: 0 auto;
 }
 
-.projects-filters {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 40px;
-  flex-wrap: wrap;
-}
-
-.filter-btn {
-  padding: 10px 25px;
-  border: 2px solid var(--primary-color);
-  background: transparent;
-  color: var(--primary-color);
-  border-radius: 30px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: var(--transition);
-}
-
-.filter-btn.active,
-.filter-btn:hover {
-  background: var(--primary-color);
-  color: white;
-}
-
+/* Grille des projets */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 30px;
-  margin-bottom: 60px;
+  margin-top: 40px;
 }
 
+/* Carte de projet */
 .project-card {
   background: white;
-  border-radius: 15px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: var(--shadow);
-  transition: var(--transition);
-}
-
-[data-theme="dark"] .project-card {
-  background: var(--dark-color);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .project-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
 }
 
+/* Image du projet */
 .project-image {
   position: relative;
-  height: 250px;
+  height: 220px;
   overflow: hidden;
 }
 
@@ -419,9 +409,10 @@ body {
 }
 
 .project-card:hover .project-image img {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
+/* Overlay avec liens */
 .project-overlay {
   position: absolute;
   top: 0;
@@ -433,7 +424,7 @@ body {
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: var(--transition);
+  transition: opacity 0.3s ease;
 }
 
 .project-card:hover .project-overlay {
@@ -442,202 +433,527 @@ body {
 
 .project-links {
   display: flex;
-  gap: 20px;
+  gap: 15px;
 }
 
 .project-link {
-  width: 50px;
-  height: 50px;
-  background: white;
-  border-radius: 50%;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  color: var(--primary-color);
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 6px;
   text-decoration: none;
-  font-size: 1.2rem;
-  transition: var(--transition);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
 }
 
-.project-link:hover {
-  background: var(--primary-color);
+.github-link {
+  background: #333;
   color: white;
-  transform: scale(1.1);
+}
+
+.github-link:hover {
+  background: #444;
+  transform: translateY(-2px);
+}
+
+.demo-link {
+  background: #6c63ff;
+  color: white;
+}
+
+.demo-link:hover {
+  background: #5752d4;
+  transform: translateY(-2px);
 }
 
 .project-private {
   color: white;
+  font-size: 0.9rem;
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-weight: 600;
+  gap: 8px;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  backdrop-filter: blur(10px);
 }
 
+/* Badge complet */
 .project-badge {
   position: absolute;
   top: 15px;
   right: 15px;
-}
-
-.badge {
-  padding: 5px 15px;
+  background: #4CAF50;
+  color: white;
+  padding: 5px 12px;
   border-radius: 20px;
   font-size: 0.8rem;
-  font-weight: 600;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 5px;
 }
 
-.github-badge {
-  background: #24292e;
-  color: white;
-}
-
-.brief-badge {
-  background: var(--accent-color);
-  color: white;
-}
-
-.project-badge.completed {
-  background: #10b981;
-  color: white;
-  padding: 8px 15px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
-
+/* Contenu de la carte */
 .project-content {
-  padding: 30px;
+  padding: 25px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .project-content h3 {
-  font-size: 1.5rem;
-  margin-bottom: 15px;
-  color: var(--dark-color);
+  font-size: 1.4rem;
+  color: #333;
+  margin-bottom: 10px;
 }
 
 .project-content p {
-  color: var(--text-light);
+  color: #666;
+  line-height: 1.6;
   margin-bottom: 20px;
+  flex: 1;
 }
 
+/* Technologies */
 .project-technologies {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
   margin-bottom: 20px;
 }
 
 .tech-tag {
-  background: rgba(58, 134, 255, 0.1);
-  color: var(--primary-color);
-  padding: 5px 15px;
-  border-radius: 20px;
-  font-size: 0.9rem;
+  background: #f0f0f0;
+  color: #555;
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 0.85rem;
   font-weight: 500;
 }
 
-.responsive-badge {
-  background: #3b82f6;
-  color: white;
-  padding: 8px 15px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  margin-left: 10px;
-}
-
+/* Actions */
 .project-actions {
   display: flex;
-  gap: 15px;
+  justify-content: space-between;
   align-items: center;
+  gap: 15px;
 }
 
-.projects-cta {
-  text-align: center;
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
 }
 
-.cta-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 30px;
-  flex-wrap: wrap;
+.btn-github {
+  background: #f0f0f0;
+  color: #333;
+  border: 1px solid #ddd;
 }
 
+.btn-github:hover {
+  background: #e0e0e0;
+  transform: translateY(-2px);
+}
+
+.btn-demo {
+  background: #6c63ff;
+  color: white;
+}
+
+.btn-demo:hover {
+  background: #5752d4;
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: #6c63ff;
+  border: 1px solid #6c63ff;
+}
+
+.btn-outline:hover {
+  background: #6c63ff;
+  color: white;
+}
+
+/* Badge responsive */
+.responsive-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: #e8f4fd;
+  color: #2d7dd2;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-left: auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .projects-header h2 {
+    font-size: 2rem;
+  }
+  
+  .project-image {
+    height: 200px;
+  }
+  
+  .project-content {
+    padding: 20px;
+  }
+  
+  .project-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  
+  .btn {
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .responsive-badge {
+    margin-left: 0;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .project-card {
+    max-width: 100%;
+  }
+  
+  .project-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .project-link {
+    justify-content: center;
+  }
+}
 /* Section Compétences */
+#competences {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.skills-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
 .skills-header {
   text-align: center;
   margin-bottom: 60px;
 }
 
 .skills-header h5 {
-  color: var(--primary-color);
-  font-size: 1rem;
+  color: #6c63ff;
+  font-size: 1.1rem;
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .skills-header h2 {
   font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: var(--dark-color);
+  color: #333;
+  margin-bottom: 15px;
+  background: linear-gradient(135deg, #6c63ff 0%, #4a44c8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .skills-header p {
-  color: var(--text-light);
+  color: #666;
+  font-size: 1.1rem;
   max-width: 600px;
   margin: 0 auto;
+  line-height: 1.6;
 }
 
+/* Grille des compétences */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 30px;
-  margin-bottom: 60px;
 }
 
+/* Catégorie de compétences */
 .skill-category {
   background: white;
+  border-radius: 16px;
   padding: 30px;
-  border-radius: 15px;
-  box-shadow: var(--shadow);
+  box-shadow: 0 10px 30px rgba(108, 99, 255, 0.08);
+  border: 1px solid rgba(108, 99, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
 }
 
-[data-theme="dark"] .skill-category {
-  background: var(--dark-color);
+.skill-category::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #6c63ff, #4a44c8);
+  border-radius: 16px 16px 0 0;
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+  transform-origin: left;
 }
 
+.skill-category:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(108, 99, 255, 0.12);
+}
+
+.skill-category:hover::before {
+  transform: scaleX(1);
+}
+
+/* En-tête de catégorie */
 .category-header {
   display: flex;
   align-items: center;
   gap: 15px;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(108, 99, 255, 0.1);
 }
 
 .category-header i {
-  font-size: 2rem;
-  color: var(--primary-color);
+  font-size: 1.8rem;
+  color: #6c63ff;
+  background: rgba(108, 99, 255, 0.1);
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.skill-category:hover .category-header i {
+  transform: rotate(360deg);
+  background: linear-gradient(135deg, #6c63ff, #4a44c8);
+  color: white;
 }
 
 .category-header h3 {
-  font-size: 1.3rem;
-  color: var(--dark-color);
+  font-size: 1.4rem;
+  color: #333;
+  margin: 0;
+  font-weight: 600;
 }
 
+/* Liste des compétences */
 .skills-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 15px;
+}
+
+/* Item de compétence sans pourcentage */
+.skill-item-no-percent {
+  background: #f8f9ff;
+  border-radius: 12px;
+  padding: 15px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(108, 99, 255, 0.1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-item-no-percent:hover {
+  background: linear-gradient(135deg, #6c63ff 0%, #4a44c8 100%);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(108, 99, 255, 0.2);
+}
+
+.skill-item-no-percent:hover .skill-icon {
+  background: white;
+  color: #6c63ff;
+  transform: scale(1.1);
+}
+
+.skill-item-no-percent:hover .skill-name {
+  color: white;
+}
+
+.skill-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #6c63ff;
+  box-shadow: 0 4px 12px rgba(108, 99, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.skill-name {
+  font-size: 0.95rem;
+  color: #555;
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+/* Animation d'apparition des items */
+.skill-item-no-percent {
+  animation: fadeInUp 0.6s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation delay pour les items */
+.skill-item-no-percent:nth-child(1) { animation-delay: 0.1s; }
+.skill-item-no-percent:nth-child(2) { animation-delay: 0.2s; }
+.skill-item-no-percent:nth-child(3) { animation-delay: 0.3s; }
+.skill-item-no-percent:nth-child(4) { animation-delay: 0.4s; }
+.skill-item-no-percent:nth-child(5) { animation-delay: 0.5s; }
+.skill-item-no-percent:nth-child(6) { animation-delay: 0.6s; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  #competences {
+    padding: 60px 0;
+  }
+  
+  .skills-header h2 {
+    font-size: 2rem;
+  }
+  
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .skill-category {
+    padding: 25px;
+  }
+  
+  .skills-list {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 12px;
+  }
+  
+  .skill-item-no-percent {
+    padding: 12px;
+  }
+  
+  .skill-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-header h2 {
+    font-size: 1.8rem;
+  }
+  
+  .skills-header p {
+    font-size: 1rem;
+  }
+  
+  .category-header {
+    gap: 12px;
+  }
+  
+  .category-header i {
+    width: 45px;
+    height: 45px;
+    font-size: 1.5rem;
+  }
+  
+  .category-header h3 {
+    font-size: 1.2rem;
+  }
+  
+  .skills-list {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+  
+  .skill-item-no-percent {
+    padding: 10px;
+  }
+  
+  .skill-name {
+    font-size: 0.85rem;
+  }
+}
+
+/* Effet de pulse sur hover */
+.skill-item-no-percent::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.skill-item-no-percent:hover::after {
+  opacity: 1;
 }
 
 /* Compétences SANS POURCENTAGES */
