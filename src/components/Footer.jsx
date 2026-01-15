@@ -1,87 +1,108 @@
 import React from 'react';
-import './Footer.css';
 
 function Footer() {
-  // Fonction pour le scroll smooth (identique à Navbar)
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const offsetTop = element.offsetTop - 80;
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
       });
     }
   };
 
+  const handleEmailClick = () => {
+    window.location.href = 'mailto:follyrefdig@gmail.com?subject=Contact Portfolio';
+  };
+
+  const handleCallClick = () => {
+    window.location.href = 'tel:+22898265062';
+  };
+
   return (
     <footer className="footer">
-      <div className="footer-content">
-        <div className="footer-section">
-          <div className="footer-logo">
-            <i className="fas fa-code"></i>
-            <span>ISIDORE EKLOU</span>
-          </div>
-          <p>Développeur Full Stack & Designer UI/UX passionné par la création de solutions digitales innovantes.</p>
-          <div className="footer-contact">
-            <p><i className="fas fa-phone"></i> +228 98 26 50 62</p>
-            <p><i className="fas fa-envelope"></i> follyrefdig@gmail.com</p>
-            <p><i className="fas fa-map-marker-alt"></i> Lomé, Togo</p>
-          </div>
-        </div>
-
-        
-
-        <div className="footer-section">
-          <h3>Mes Services</h3>
-          <ul className="footer-links">
-            <li><i className="fas fa-palette"></i> UI/UX Design</li>
-            <li><i className="fas fa-code"></i> Développement Web</li>
-            <li><i className="fas fa-mobile-alt"></i> Applications Mobile</li>
-            <li><i className="fas fa-chart-line"></i> Référencement SEO</li>
-            <li><i className="fas fa-paint-brush"></i> Infographie</li>
-            <li><i className="fas fa-users"></i> Community Management</li>
-            <li><i className="fas fa-laptop-medical"></i> Assistance Informatique</li>
-          </ul>
-        </div>
-
-        <div className="footer-section">
-          <h3>Réseaux sociaux</h3>
-          <div className="social-icons-contact">
-                 
-                  <a href="https://www.facebook.com/isidore.eklou.92" className="social-icon-contact">
-                    <i className="fab fa-facebook"></i>
-                  </a>
-                  <a href="https://www.threads.net/@isidorekl21" className="social-icon-contact">
-                    <i className="fab fa-threads"></i>
-                  </a>
-                  <a href="https://www.linkedin.com/in/isidore-eklou-461992360?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" className="social-icon-contact">
-                    <i className="fab fa-linkedin"></i>
-                  </a>
-                  <a href="https://github.com/FOLL04" className="social-icon-contact">
-                    <i className="fab fa-github"></i>
-                  </a>
-                  
-          </div>
+      <div className="footer-main">
+        <div className="footer-grid">
           
-         
+          {/* Colonne 1: Logo et contact */}
+          <div className="footer-column">
+            <div className="footer-logo" onClick={() => scrollToSection('accueil')}>
+              <span className="logo-first">ISIDORE</span>
+              <span className="logo-last">EKLOU</span>
+            </div>
+            <p className="footer-tagline">
+              Développeur passionné par la création de solutions digitales innovantes
+            </p>
+            <div className="footer-contact">
+              <div className="contact-item" onClick={handleEmailClick}>
+                <i className="fas fa-envelope"></i>
+                <span>follyrefdig@gmail.com</span>
+              </div>
+              <div className="contact-item" onClick={handleCallClick}>
+                <i className="fas fa-phone"></i>
+                <span>+228 98 26 50 62</span>
+              </div>
+            </div>
+          </div>
 
-          <div className="footer-cta">
-            <p>Prêt à démarrer votre projet ?</p>
+          {/* Colonne 2: Navigation */}
+          <div className="footer-column">
+            <h3 className="footer-title">Navigation</h3>
+            <nav className="footer-nav">
+              <button onClick={() => scrollToSection('accueil')} className="nav-link">
+                Accueil
+              </button>
+              <button onClick={() => scrollToSection('projets')} className="nav-link">
+                Projets
+              </button>
+              <button onClick={() => scrollToSection('competences')} className="nav-link">
+                Compétences
+              </button>
+              <button onClick={() => scrollToSection('contact')} className="nav-link">
+                Contact
+              </button>
+            </nav>
+          </div>
+
+          {/* Colonne 3: Réseaux sociaux */}
+          <div className="footer-column">
+            <h3 className="footer-title">Réseaux</h3>
+            <div className="social-grid">
+              <a 
+                href="https://github.com/FOLL04" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="social-link github"
+                aria-label="GitHub"
+              >
+                <i className="fab fa-github"></i>
+                <span>GitHub</span>
+              </a>
+              <a 
+                href="https://www.linkedin.com/in/isidore-eklou-461992360" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="social-link linkedin"
+                aria-label="LinkedIn"
+              >
+                <i className="fab fa-linkedin"></i>
+                <span>LinkedIn</span>
+              </a>
+            </div>
             <button 
-              className="btn-footer"
+              className="contact-btn"
               onClick={() => scrollToSection('contact')}
             >
-              <i className="fas fa-rocket"></i> Commencer maintenant
+              <i className="fas fa-paper-plane"></i>
+              Me Contacter
             </button>
           </div>
         </div>
       </div>
-      
-      <div className="footer-bottom">
-        <div className="footer-bottom-content">
-          <p>&copy; 2026 ISIDORE FOLLY EKLOU. Tous droits réservés.</p>
-        </div>
+
+      {/* Copyright */}
+      <div className="footer-copyright">
+        <p>&copy; {new Date().getFullYear()} Isidore Eklou - Tous droits réservés</p>
       </div>
     </footer>
   );

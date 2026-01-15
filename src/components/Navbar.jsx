@@ -1,220 +1,287 @@
-import React, { useState, useEffect } from 'react';
-import './Navbar.css';
+import { useState, useEffect, useRef } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { 
+  FaGithub, 
+  FaLinkedin, 
+  FaEnvelope, 
+  FaBars, 
+  FaTimes,
+  FaHome,
+  FaUser,
+  FaProjectDiagram,
+  FaPhone,
+  FaDownload,
+  FaEye
+} from 'react-icons/fa';
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('accueil');
+  const menuRef = useRef(null);
+  const hamburgerRef = useRef(null);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  // Détecter le scroll pour l'effet de transparence
+  // Pages de navigation
+  const pages = [
+    { id: 'accueil', label: 'Accueil', path: '/', icon: <FaHome /> },
+    { id: 'apropos', label: 'À Propos', path: '/apropos', icon: <FaUser /> },
+    { id: 'projets', label: 'Projets', path: '/projets', icon: <FaProjectDiagram /> },
+    { id: 'contact', label: 'Contact', path: '/contact', icon: <FaPhone /> }
+  ];
+
+  // Détection de la page active
+  const getActivePage = () => {
+    const currentPath = location.pathname;
+    const page = pages.find(p => p.path === currentPath) || pages.find(p => p.path === '/');
+    return page?.id || 'accueil';
+  };
+
+  const activePage = getActivePage();
+
+  // Détection du scroll
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-      
-      // Détection de la section active
-      const sections = ['accueil', 'apropos', 'services', 'projets', 'competences', 'galerie', 'contact'];
-      const currentSection = sections.find(section => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
-        }
-        return false;
-      });
-      
-      if (currentSection) setActiveSection(currentSection);
+      setIsScrolled(window.scrollY > 20);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Fonction pour le scroll smooth
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offsetTop = element.offsetTop - 80;
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
-      });
-      setActiveSection(sectionId);
+  // Navigation
+  const handleNavigation = (path) => {
+    navigate(path);
+    setIsMenuOpen(false);
+    
+    // Scroll vers le haut si on est déjà sur la page
+    if (location.pathname === path) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+  };
+
+  // Toggle du menu
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  // Fermer le menu en cliquant à l'extérieur
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      // Ne pas fermer si on clique sur le hamburger
+      if (hamburgerRef.current && hamburgerRef.current.contains(event.target)) {
+        return;
+      }
+      
+      // Fermer si on clique en dehors du menu
+      if (menuRef.current && !menuRef.current.contains(event.target) && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+
+    // Gérer le scroll du body
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+      document.body.style.overflow = 'auto';
+    };
+  }, [isMenuOpen]);
+
+  // Télécharger le CV
+  const downloadCV = () => {
+    const link = document.createElement('a');
+    link.href = '/CV_Isidore_EKLOU.pdf';
+    link.download = 'CV_Isidore_EKLOU.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
     setIsMenuOpen(false);
   };
 
-  // Liens de navigation
-  const navItems = [
-    { id: 'accueil', label: 'Accueil', icon: 'fas fa-home' },
-    { id: 'apropos', label: 'Àpropos', icon: 'fas fa-user' },
-    { id: 'services', label: 'Services', icon: 'fas fa-briefcase' },
-    { id: 'projets', label: 'Projets', icon: 'fas fa-code' },
-    { id: 'competences', label: 'Compétences', icon: 'fas fa-cogs' },
-    { id: 'galerie', label: 'Galerie', icon: 'fas fa-images' },
-    { id: 'contact', label: 'Contact', icon: 'fas fa-envelope' }
-  ];
-
-  // Liens sociaux
-  const socialLinks = [
-    { href: 'https://github.com/FOLL04', icon: 'fab fa-github', label: 'GitHub' },
-    { href: 'https://www.linkedin.com/in/isidore-eklou-461992360?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app', icon: 'fab fa-linkedin', label: 'LinkedIn' },
-    { href: 'https://x.com/Isidore_kl21?t=XnW_ayV9RZwUry15zTUtzQ&s=09', icon: 'fab fa-x-twitter', label: 'Twitter' },
-   
-  ];
-
-  
-
   return (
     <>
-      <nav className={`navbar ${isScrolled ? 'scrolled' : ''} ${isMenuOpen ? 'menu-open' : ''}`}>
-        <div className="nav-container">
-          {/* Logo */}
-          <div className="nav-brand" onClick={() => scrollToSection('accueil')}>
-            <div className="logo">
-              <span className="logo-text">ISIDORE</span>
-              <span className="logo-highlight">EKLOU</span>
+      <nav 
+        ref={menuRef}
+        className={`navbar ${isScrolled ? 'scrolled' : ''}`}
+      >
+        <div className="container">
+          <div className="nav-container">
+            {/* Logo */}
+            <div 
+              className="nav-brand" 
+              onClick={() => handleNavigation('/')}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => e.key === 'Enter' && handleNavigation('/')}
+              aria-label="Retour à l'accueil"
+            >
+              <div className="logo">
+                <span className="logo-name">ISIDORE</span>
+                <span className="logo-surname">EKLOU</span>
+              </div>
+              <div className="logo-subtitle">Référent Digital | Développeur Web</div>
             </div>
-            <div className="logo-subtitle">Référent Digital | Développeur web junior</div>
-          </div>
 
-          {/* Navigation Desktop */}
-          <div className="nav-links-desktop">
-            <ul>
-              {navItems.map((item) => (
-                <li key={item.id}>
-                  <a
-                    href={`#${item.id}`}
-                    className={`nav-link ${activeSection === item.id ? 'active' : ''}`}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection(item.id);
-                    }}
-                  >
-                    <i className={item.icon}></i>
-                    <span>{item.label}</span>
-                  </a>
-                </li>
+            {/* Navigation Desktop */}
+            <div className="nav-links">
+              {pages.map((page) => (
+                <button
+                  key={page.id}
+                  className={`nav-link ${activePage === page.id ? 'active' : ''}`}
+                  onClick={() => handleNavigation(page.path)}
+                  aria-label={`Aller à ${page.label}`}
+                  aria-current={activePage === page.id ? 'page' : undefined}
+                >
+                  {page.label}
+                </button>
               ))}
-            </ul>
-          </div>
+            </div>
 
-          {/* Social Links & CTA Desktop */}
-          <div className="nav-actions">
-            <div className="social-links-desktop">
-              {socialLinks.map((social, index) => (
+            {/* Actions Desktop */}
+            <div className="nav-actions">
+              <div className="social-icons">
                 <a
-                  key={index}
-                  href={social.href}
+                  href="https://github.com/FOLL04"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="social-link"
-                  aria-label={social.label}
+                  className="social-icon"
+                  aria-label="Visiter mon GitHub"
                 >
-                  <i className={social.icon}></i>
+                  <FaGithub />
                 </a>
-              ))}
+                <a
+                  href="https://www.linkedin.com/in/isidore-eklou-461992360"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-icon"
+                  aria-label="Visiter mon LinkedIn"
+                >
+                  <FaLinkedin />
+                </a>
+              </div>
+
+              <button 
+                className="btn btn-primary"
+                onClick={() => handleNavigation('/contact')}
+                aria-label="Aller au formulaire de contact"
+              >
+                <FaEnvelope /> Contact
+              </button>
             </div>
-            <button 
-              className="cta-button"
-              onClick={() => scrollToSection('contact')}
+
+            {/* Menu Burger Mobile */}
+            <button
+              ref={hamburgerRef}
+              className={`hamburger ${isMenuOpen ? 'active' : ''}`}
+              onClick={toggleMenu}
+              aria-label={isMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-menu"
             >
-              <i className="fas fa-paper-plane"></i>
-              <span>Me Contacter</span>
+              <span className="hamburger-line"></span>
+              <span className="hamburger-line"></span>
+              <span className="hamburger-line"></span>
             </button>
           </div>
-
-          {/* Menu Hamburger Mobile */}
-          <button
-            className={`hamburger ${isMenuOpen ? 'active' : ''}`}
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Menu"
-            aria-expanded={isMenuOpen}
-          >
-            <span className="hamburger-line"></span>
-            <span className="hamburger-line"></span>
-            <span className="hamburger-line"></span>
-          </button>
         </div>
 
         {/* Menu Mobile */}
-        <div className={`nav-menu-mobile ${isMenuOpen ? 'active' : ''}`}>
+        <div 
+          className={`mobile-menu ${isMenuOpen ? 'active' : ''}`}
+          id="mobile-menu"
+          aria-hidden={!isMenuOpen}
+        >
           <div className="mobile-header">
-            <div className="mobile-logo">
-              <span>ISIDORE EKLOU</span>
-              <div className="mobile-subtitle">
-                Référent Digital | Développeur web junior
-                
-                </div>
-            </div>
-          </div>
-
-          <ul className="mobile-nav-links">
-            {navItems.map((item) => (
-              <li key={item.id}>
-                <a
-                  href={`#${item.id}`}
-                  className={`mobile-nav-link ${activeSection === item.id ? 'active' : ''}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(item.id);
-                  }}
-                >
-                  <div className="mobile-link-content">
-                    <i className={item.icon}></i>
-                    <span>{item.label}</span>
-                  </div>
-                  <i className="fas fa-chevron-right"></i>
-                </a>
-              </li>
-            ))}
-          </ul>
-
-          <div className="mobile-social-cta">
-            <div className="mobile-social-links">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mobile-social-link"
-                  aria-label={social.label}
-                >
-                  <i className={social.icon}></i>
-                </a>
-              ))}
-            </div>
-            <button 
-              className="mobile-cta-button"
-              onClick={() => scrollToSection('contact')}
+            <div 
+              className="mobile-logo"
+              onClick={() => handleNavigation('/')}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => e.key === 'Enter' && handleNavigation('/')}
+              aria-label="Retour à l'accueil"
             >
-              <i className="fas fa-comment-dots"></i>
-              Discuter d'un projet
-            </button>
+              <span className="mobile-logo-text">ISIDORE EKLOU</span>
+              <div className="mobile-subtitle">Référent Digital | Développeur Web</div>
+            </div>
           </div>
 
-          <div className="mobile-contact-info">
-            <a href="tel:+22898265062" className="mobile-contact-link">
-              <i className="fas fa-phone"></i>
-              +228 98 26 50 62
-            </a>
-            <a href="mailto:follyrefdig@gmail.com" className="mobile-contact-link">
-              <i className="fas fa-envelope"></i>
-              follyrefdig@gmail.com
-            </a>
+          <div className="mobile-nav-links">
+            {pages.map((page) => (
+              <button
+                key={page.id}
+                className={`mobile-nav-link ${activePage === page.id ? 'active' : ''}`}
+                onClick={() => handleNavigation(page.path)}
+                aria-current={activePage === page.id ? 'page' : undefined}
+              >
+                <div className="mobile-link-content">
+                  {page.icon}
+                  <span>{page.label}</span>
+                </div>
+              </button>
+            ))}
+          </div>
+
+          <div className="mobile-actions">
+            <div className="mobile-social-icons">
+              <a
+                href="https://github.com/FOLL04"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mobile-social-icon github"
+                aria-label="Visiter mon GitHub"
+              >
+                <FaGithub />
+                <span>GitHub</span>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/isidore-eklou-461992360"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mobile-social-icon linkedin"
+                aria-label="Visiter mon LinkedIn"
+              >
+                <FaLinkedin />
+                <span>LinkedIn</span>
+              </a>
+            </div>
+
+            <button 
+              className="btn btn-primary mobile-contact-btn"
+              onClick={() => handleNavigation('/contact')}
+              aria-label="Aller au formulaire de contact"
+            >
+              <FaEnvelope /> Me Contacter
+            </button>
+
+            <button 
+              className="btn btn-outline"
+              onClick={downloadCV}
+              aria-label="Télécharger mon CV"
+              style={{ marginTop: '16px', width: '100%' }}
+            >
+              <FaDownload /> Télécharger CV
+            </button>
           </div>
         </div>
 
-        {/* Overlay */}
-        {isMenuOpen && (
-          <div 
-            className="menu-overlay"
-            onClick={() => setIsMenuOpen(false)}
-          />
-        )}
+        {/* Overlay pour mobile */}
+        <div 
+          className={`menu-overlay ${isMenuOpen ? 'active' : ''}`}
+          onClick={() => setIsMenuOpen(false)}
+          aria-hidden="true"
+        />
       </nav>
       
-      {/* Espace réservé pour la hauteur fixe de la navbar */}
+      {/* Espace pour la navbar fixe */}
       <div className="navbar-spacer"></div>
     </>
   );
