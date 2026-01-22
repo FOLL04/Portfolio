@@ -1,149 +1,68 @@
-import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import {
-  FaGithub,
-  FaLinkedin,
-  FaEnvelope,
-  FaHome,
-  FaUser,
-  FaProjectDiagram,
-  FaPhone,
-  FaDownload,
-} from "react-icons/fa";
+import React, { useState, useEffect } from 'react';
+import './Navbar.css';
 
-function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const pages = [
-    { id: "accueil", label: "Accueil", path: "/", icon: <FaHome /> },
-    { id: "apropos", label: "À Propos", path: "/apropos", icon: <FaUser /> },
-    { id: "projets", label: "Projets", path: "/projets", icon: <FaProjectDiagram /> },
-    { id: "contact", label: "Contact", path: "/contact", icon: <FaPhone /> },
-  ];
-
-  const activePage = location.pathname;
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavigation = (path) => {
-    navigate(path);
-    setIsMenuOpen(false);
-    if (location.pathname === path) {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setIsOpen(false);
     }
   };
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-
-  const downloadCV = () => {
-    const link = document.createElement("a");
-    link.href = "images/CV.pdf";
-    link.download = "images/CV.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    setIsMenuOpen(false);
-  };
+  const navItems = [
+    { id: 'accueil', label: 'Accueil' },
+    { id: 'apropos', label: 'À propos' },
+    { id: 'projets', label: 'Projets' },
+    { id: 'contact', label: 'Contact' }
+  ];
 
   return (
-    <>
-      <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
-        <div className="nav-container">
-          {/* Logo */}
-          <div
-            className="nav-brand"
-            onClick={() => handleNavigation("/")}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => e.key === "Enter" && handleNavigation("/")}
-          >
-            <div className="logo">
-              <span className="logo-name">ISIDORE</span>
-              <span className="logo-surname">EKLOU</span>
-            </div>
-            <div className="logo-subtitle">Référent Digital | Développeur Web</div>
-          </div>
-
-          {/* Desktop Navigation */}
-          <div className="nav-links">
-            {pages.map((page) => (
-              <button
-                key={page.id}
-                className={`nav-link ${activePage === page.path ? "active" : ""}`}
-                onClick={() => handleNavigation(page.path)}
-              >
-                {page.label}
-              </button>
-            ))}
-          </div>
-
-          {/* Desktop Actions */}
-          <div className="nav-actions">
-            <div className="social-icons">
-              <a href="https://github.com/FOLL04" target="_blank" rel="noopener noreferrer">
-                <FaGithub />
-              </a>
-              <a href="https://www.linkedin.com/in/isidore-eklou-461992360" target="_blank" rel="noopener noreferrer">
-                <FaLinkedin />
-              </a>
-            </div>
-            <button className="btn btn-primary" onClick={() => handleNavigation("/contact")}>
-              <FaEnvelope /> Contact
-            </button>
-          </div>
-
-          {/* Burger Menu */}
-          <button
-            className={`hamburger ${isMenuOpen ? "active" : ""}`}
-            onClick={toggleMenu}
-            aria-label={isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
+    <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+      <div className="nav-container">
+        <div className="nav-logo" onClick={() => scrollToSection('accueil')}>
+          Isidore Folly EKLOU
         </div>
 
-        {/* Mobile Menu */}
-        <div className={`mobile-menu ${isMenuOpen ? "active" : ""}`}>
-          <div className="mobile-nav-links">
-            {pages.map((page) => (
-              <button
-                key={page.id}
-                className={`mobile-nav-link ${activePage === page.path ? "active" : ""}`}
-                onClick={() => handleNavigation(page.path)}
-              >
-                {page.icon} <span>{page.label}</span>
-              </button>
-            ))}
-          </div>
+        {/* Bouton burger pour mobile */}
+        <button 
+          className={`nav-toggle ${isOpen ? 'open' : ''}`} 
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
 
-          <div className="mobile-actions">
-            <a href="https://github.com/FOLL04" target="_blank" rel="noopener noreferrer">
-              <FaGithub /> GitHub
-            </a>
-            <a href="https://www.linkedin.com/in/isidore-eklou-461992360" target="_blank" rel="noopener noreferrer">
-              <FaLinkedin /> LinkedIn
-            </a>
-            <button className="btn btn-primary" onClick={() => handleNavigation("/contact")}>
-              <FaEnvelope /> Me Contacter
-            </button>
-            <button className="btn btn-outline" onClick={downloadCV}>
-              <FaDownload /> Télécharger CV
-            </button>
-          </div>
-        </div>
-      </nav>
-      <div className="navbar-spacer"></div>
-    </>
+        {/* Menu de navigation */}
+        <ul className={`nav-menu ${isOpen ? 'open' : ''}`}>
+          {navItems.map((item) => (
+            <li key={item.id} className="nav-item">
+              <button 
+                className={`nav-link ${item.id === 'contact' ? 'nav-btn' : ''}`}
+                onClick={() => scrollToSection(item.id)}
+              >
+                {item.label}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </nav>
   );
-}
+};
 
 export default Navbar;
