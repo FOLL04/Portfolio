@@ -1,26 +1,26 @@
-// App.jsx
-import React from 'react';
+// App.jsx - VERSION CORRIGÉE
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './App.css';
+import Navbar from './components/Navbar';
 import Home from './pages/Home';
+import Footer from './components/Footer';
+
+// Importez About, Projects, Contact seulement si les fichiers existent
+// Si vous venez de les créer, décommentez ces lignes :
 import About from './pages/About';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import './App.css';
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Navbar />
-        <main className="main-content">
+        <main>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/accueil" element={<Home />} />
-            <Route path="/apropos" element={<About />} />
-            <Route path="/projets" element={<Projects />} />
-            <Route path="/competences" element={<About />} /> // Ou créer une page spécifique
+            <Route path="/apropos" element={<About />} /> {/* Changé à /apropos */}
+            <Route path="/projets" element={<Projects />} /> {/* Changé à /projets */}
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>

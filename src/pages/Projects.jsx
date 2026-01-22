@@ -1,35 +1,37 @@
 import React, { useState } from 'react';
 
 
+
 function Projects() {
   // Liste complète de vos projets
   const allProjects = [
     {
       id: 1,
-      title: "Site E-commerce WordPress",
-      description: "Boutique en ligne complète avec WooCommerce, paiement sécurisé et gestion des stocks",
+      title: "Site E-commerce Germany Shop",
+      description: "Boutique en ligne complète avec WooCommerce pour vendre des produits allemands.",
       technologies: ["WordPress", "WooCommerce", "PHP", "CSS", "JavaScript"],
       category: "wordpress",
-      github: "https://github.com/FOLL04/ecommerce-wp",
-      demo: "https://boutique.demo.com"
+      github: null,
+      demo: "https://boutique.demo.com",
+      images:"images/germany.png"
     },
     {
       id: 2,
-      title: "Application React - Gestion de tâches",
-      description: "Application moderne de gestion de tâches avec drag & drop et notifications",
-      technologies: ["React", "JavaScript", "CSS3", "LocalStorage"],
-      category: "react",
-      github: "https://github.com/FOLL04/task-manager-react",
-      demo: "https://tasks.demo.com"
+      title: "Logiciel de Gestion d'une ecole GESCADMEC",
+      description: "Application de gestion scolaire avec fonctionnalités complètes pour les administrateurs",
+      technologies: ["Laravel", "PHP", "Blade", "MySQL"],
+      category: "laravel",
+      github: "https://github.com/FOLL04/Gescadmec",
+      demo: null
     },
     {
       id: 3,
-      title: "Site Vitrine - Restaurant",
-      description: "Site responsive pour restaurant avec menu en ligne, réservation et galerie",
-      technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
-      category: "bootstrap",
-      github: "https://github.com/FOLL04/restaurant-website",
-      demo: "https://restaurant.demo.com"
+      title: "Site Web de tempéreature en temps réel",
+      description: "Site web affichant la température en temps réel avec intégration d'une API météo",
+      technologies: ["HTML5", "CSS3", "JavaScript", "API Méteo"],
+      category: "html-css-js",
+      github: "https://github.com/FOLL04/weather",
+      demo: "https://foll04.github.io/weather/"
     },
     {
       id: 4,
@@ -42,42 +44,25 @@ function Projects() {
     },
     {
       id: 5,
-      title: "Portfolio Personnel",
-      description: "Site portfolio moderne avec animations et formulaire de contact",
-      technologies: ["HTML5", "CSS3", "JavaScript", "GSAP"],
+      title: "Quizz saisie de mots",
+      description: "Application web de quizz pour la saisie rapide de mots avec suivi des performances",
+      technologies: ["HTML5", "CSS3", "JavaScript", ],
       category: "html-css-js",
-      github: "https://github.com/FOLL04/personal-portfolio",
+      github: "https://github.com/FOLL04/quizz",
       demo: "https://portfolio.demo.com"
     },
     {
       id: 6,
-      title: "Blog WordPress Thème Personnalisé",
-      description: "Thème WordPress sur mesure avec éditeur Gutenberg et optimisation SEO",
-      technologies: ["WordPress", "PHP", "JavaScript", "REST API"],
+      title: "Site Wordpress pour une couturière AMETOKOSTYLE",
+      description: "Site vitrine WordPress personnalisé pour une couturière locale",
+      technologies: ["WordPress", "PHP", "HTML", "CSS","Simply Schuddles Appointment"],
       category: "wordpress",
-      github: "https://github.com/FOLL04/custom-wp-theme",
-      demo: "https://blog.demo.com"
+      github: null,
+      demo: "https://ametokostyle.page.gd/?i=1"
     },
+    
     {
       id: 7,
-      title: "Application Météo React",
-      description: "Application météo avec prévisions sur 7 jours et géolocalisation",
-      technologies: ["React", "API REST", "CSS Modules", "Axios"],
-      category: "react",
-      github: "https://github.com/FOLL04/weather-app",
-      demo: "https://meteo.demo.com"
-    },
-    {
-      id: 8,
-      title: "Site e-Learning Laravel",
-      description: "Plateforme d'apprentissage en ligne avec cours, quiz et certificats",
-      technologies: ["Laravel", "MySQL", "JavaScript", "PDF Generation"],
-      category: "laravel",
-      github: "https://github.com/FOLL04/elearning-platform",
-      demo: "https://elearn.demo.com"
-    },
-    {
-      id: 9,
       title: "Landing Page Bootstrap",
       description: "Page de destination responsive pour produit digital avec formulaire de capture",
       technologies: ["Bootstrap 5", "JavaScript", "EmailJS"],
@@ -89,7 +74,7 @@ function Projects() {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [filter, setFilter] = useState('all'); // 'all', 'wordpress', 'react', 'laravel', 'bootstrap', 'html-css-js'
-  const projectsPerPage = 6;
+  const projectsPerPage = 4;
 
   // Filtrer les projets par catégorie
   const filteredProjects = filter === 'all' 

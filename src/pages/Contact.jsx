@@ -107,12 +107,12 @@ function Contact() {
             <div className="form-side-message">
               <h3><FaHandshake /> Pourquoi me contacter ?</h3>
               <ul>
-                <li>✅ Développement sur mesure</li>
-                <li>✅ Design UX/UI optimisé</li>
-                <li>✅ Respect des délais</li>
-                <li>✅ Support technique inclus</li>
-                <li>✅ Solutions évolutives</li>
-                <li>✅ Technologies modernes</li>
+                <li> Développement sur mesure</li>
+                <li> Design UX/UI optimisé</li>
+                <li> Respect des délais</li>
+                <li> Support technique inclus</li>
+                <li> Solutions évolutives</li>
+                <li> Technologies modernes</li>
               </ul>
               
               <div style={{marginTop: '2rem'}}>
@@ -198,7 +198,7 @@ function Contact() {
               <div style={{marginTop: '2rem', padding: '1rem', background: '#f0f7ff', borderRadius: '0.5rem'}}>
                 <h4>Disponibilité</h4>
                 <p style={{margin: '0.5rem 0', color: '#2e7d32'}}>
-                  ✅ Disponible pour de nouvelles opportunités
+                   Disponible pour de nouvelles opportunités
                 </p>
                 <p style={{margin: '0.5rem 0', color: '#666'}}>
                   Réponse sous 24h maximum

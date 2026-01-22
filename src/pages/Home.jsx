@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-
 function Home() {
   const navigate = useNavigate();
   const [typingText, setTypingText] = useState('');
+  const [showCursor, setShowCursor] = useState(true);
   const fullText = 'Bienvenue sur mon portfolio';
 
+  // Effet pour le texte qui s'écrit lettre par lettre
   useEffect(() => {
     let index = 0;
     const typingInterval = setInterval(() => {
@@ -15,6 +16,12 @@ function Home() {
         index++;
       } else {
         clearInterval(typingInterval);
+        // Faire clignoter le curseur après la fin de l'écriture
+        const cursorInterval = setInterval(() => {
+          setShowCursor(prev => !prev);
+        }, 500);
+        
+        return () => clearInterval(cursorInterval);
       }
     }, 100);
 
@@ -23,7 +30,7 @@ function Home() {
 
   const downloadCV = () => {
     const link = document.createElement('a');
-    link.href = '/CV.pdf'; // Assure-toi que le fichier est dans le dossier public
+    link.href = '/CV.pdf'; // Correction du chemin
     link.download = 'CV_Isidore_EKLOU.pdf';
     document.body.appendChild(link);
     link.click();
@@ -33,24 +40,24 @@ function Home() {
   const projects = [
     {
       id: 1,
-      title: "Site E-commerce Artisanal",
-      description: "Plateforme de vente en ligne pour artisans locaux avec système de paiement sécurisé.",
-      technologies: ["React", "Node.js", "MongoDB"],
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop"
+      title: "Site E-commerce Germany Shop",
+      description: "Plateforme de vente en ligne pour des produits allemands.",
+      technologies: ["WordPress", "PHP", "CSS", "HTML"],
+      image:  "images/germany.png" // Correction du chemin
     },
     {
       id: 2,
-      title: "Dashboard Analytics",
-      description: "Tableau de bord pour analyse de données avec visualisations interactives.",
-      technologies: ["Vue.js", "Chart.js", "Express"],
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop"
+      title: "Température en temps réel",
+      description: "Site web pour avoir la température en temps réel.",
+      technologies: ["React", "API météo", "CSS", "HTML"],
+      image: "images/wether.jpeg" // Correction du chemin
     },
     {
       id: 3,
-      title: "Application Mobile Fitness",
-      description: "App de suivi d'entraînement avec plans personnalisés et suivi nutritionnel.",
-      technologies: ["React Native", "Firebase", "Redux"],
-      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop"
+      title: "Application web de saisie des mots",
+      description: "Application web pour saisir des mots. Très performante pour les apprentis en Word.",
+      technologies: ["HTML5", "CSS", "Javascript", "Bootstrap"],
+      image: "images/me04.jpg" // Correction du chemin
     }
   ];
 
@@ -63,7 +70,7 @@ function Home() {
             <div className="hero-text">
               <h1 className="typing-title">
                 {typingText}
-                <span className="cursor">|</span>
+                <span className={`cursor ${showCursor ? 'visible' : 'hidden'}`}>|</span>
               </h1>
               
               <h2 className="hero-subtitle">
@@ -103,6 +110,8 @@ function Home() {
                   <i className="fab fa-react"></i>
                   <i className="fab fa-js"></i>
                   <i className="fab fa-html5"></i>
+                  <i className="fab fa-css3-alt"></i>
+                  <i className="fab fa-wordpress"></i>
                 </div>
               </div>
             </div>
@@ -129,7 +138,7 @@ function Home() {
                 <i className="fas fa-project-diagram"></i>
               </div>
               <div className="stat-content">
-                <h3 className="stat-number">20+</h3>
+                <h3 className="stat-number">15+</h3>
                 <p className="stat-label">Projets réalisés</p>
               </div>
             </div>
@@ -139,7 +148,7 @@ function Home() {
                 <i className="fas fa-users"></i>
               </div>
               <div className="stat-content">
-                <h3 className="stat-number">15+</h3>
+                <h3 className="stat-number">10+</h3>
                 <p className="stat-label">Clients satisfaits</p>
               </div>
             </div>
@@ -165,7 +174,7 @@ function Home() {
       </section>
 
       {/* Projets Section */}
-      <section className="projects-section">
+      <section className="projects-section" id="projets">
         <div className="container">
           <div className="section-header">
             <h2>Mes Projets Récents</h2>
@@ -176,11 +185,18 @@ function Home() {
             {projects.map(project => (
               <div key={project.id} className="project-card">
                 <div className="project-image">
-                  <img src={project.image} alt={project.title} />
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = "/images/placeholder.jpg";
+                    }}
+                  />
                   <div className="project-overlay">
                     <button 
                       className="view-project-btn"
-                      onClick={() => navigate('/projets')}
+                      onClick={() => navigate(`/projet/${project.id}`)}
                     >
                       <i className="fas fa-external-link-alt"></i>
                     </button>
@@ -244,7 +260,7 @@ function Home() {
                 <a href="tel:+22898265062">+228 98 26 50 62</a>
               </div>
               <div className="contact-item">
-                <i className="fab fa-whatsapp"></i>
+                <i className="fab fa-whatsapp" href="c:\Users\ADN GOLFE1\AppData\Local\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\LocalState\sessions\01BBF6B0BBF7455A2C6756488C779C6DFD05EDA9\transfers\2026-04\WhatsApp Image 2026-01-21 at 20.17.22.jpeg"></i>
                 <span>Disponible sur WhatsApp</span>
               </div>
             </div>

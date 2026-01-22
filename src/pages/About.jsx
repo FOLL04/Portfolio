@@ -2,6 +2,7 @@ import React from 'react';
 import { FaUser, FaGraduationCap, FaCode, FaGlobe, FaEnvelope, FaGamepad, FaRocket, FaLightbulb, FaFileDownload, FaEye } from 'react-icons/fa';
 import { FaGithub, FaLinkedin, FaReact, FaLaravel, FaWordpress, FaBootstrap } from 'react-icons/fa';
 
+
 function About() {
   return (
     <>
