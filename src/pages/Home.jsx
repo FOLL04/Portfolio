@@ -33,8 +33,8 @@ const Home = () => {
 
   const downloadCV = () => {
     const link = document.createElement('a');
-    link.href = '/images/CV.pdf';
-    link.download = 'CV_Isidore.pdf';
+    link.href = '/images/CV_isidoreNew.pdf';
+    link.download = 'CV_IsidoreFolly.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -71,7 +71,8 @@ const Home = () => {
   // Initialisation EmailJS
   useEffect(() => {
     // Initialiser EmailJS avec votre clé publique
-    emailjs.init("hFK4E4YCOs31XC-Ew"); // Remplacez par votre clé publique EmailJS
+    // NOTE: Obtenez votre clé publique depuis https://dashboard.emailjs.com
+    emailjs.init("hFK4E4YCOs31XC-Ew");
   }, []);
 
   const projects = [
@@ -146,19 +147,20 @@ const Home = () => {
 
     try {
       // Envoi avec EmailJS
+      const templateParams = {
+        from_name: contactForm.name,
+        from_email: contactForm.email,
+        subject: contactForm.subject || 'Message depuis le portfolio',
+        message: contactForm.message,
+        to_name: 'Isidore',
+        reply_to: contactForm.email,
+        date: new Date().toLocaleDateString('fr-FR')
+      };
+
       const response = await emailjs.send(
-        'service_7zbp5ts', // Remplacez par votre Service ID
-        'template_exra0wa', // Remplacez par votre Template ID
-        {
-          from_name: contactForm.name,
-          from_email: contactForm.email,
-          subject: contactForm.subject || 'Message depuis le portfolio',
-          message: contactForm.message,
-          to_name: 'Isidore',
-          reply_to: contactForm.email,
-          date: new Date().toLocaleDateString('fr-FR')
-        },
-        'hFK4E4YCOs31XC-Ew' // Remplacez par votre Public Key
+        'service_43ivmfv', // Votre Service ID depuis https://dashboard.emailjs.com
+        'template_iuo51g1', // Votre Template ID depuis https://dashboard.emailjs.com
+        templateParams
       );
 
       if (response.status === 200) {
@@ -171,8 +173,8 @@ const Home = () => {
         }, 5000);
       }
     } catch (err) {
-      console.error('Erreur EmailJS:', err);
-      setError('Une erreur est survenue lors de l\'envoi. Veuillez réessayer.');
+      console.error('Erreur EmailJS complète:', err);
+      setError(`Erreur : ${err.text || 'Une erreur est survenue lors de l\'envoi. Vérifiez votre configuration EmailJS.'}`);
     } finally {
       setIsSending(false);
     }
